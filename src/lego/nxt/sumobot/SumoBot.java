@@ -16,6 +16,7 @@ import lego.nxt.sumobot.behavior.BatteryLowBehavior;
 import lego.nxt.sumobot.behavior.DriveForwardBehavior;
 import lego.nxt.sumobot.behavior.EnemyDetectionBehavior;
 import lego.nxt.sumobot.behavior.ObstacleBehavior;
+import lego.nxt.sumobot.behavior.SonarEnemyDetection;
 //import lejos.hardware.motor.NXTRegulatedMotor;
 import lego.nxt.sumobot.objectdetection.ObjectDetect;
 
@@ -83,12 +84,15 @@ public class SumoBot {
         Behavior hitWhiteLine = new ObstacleBehavior(this);
         //Behavior lowBattery = new BatteryLowBehavior(this, Battery.getVoltage());
         Behavior enemyDetectionBehavior = new EnemyDetectionBehavior(this);
+        Behavior sonarEnemyDetection = new SonarEnemyDetection(this);
         
         arbitrator = new Arbitrator(
         		new Behavior[]{
         				enemyDetectionBehavior,
+        				//sonarEnemyDetection
         				forwardToEnemy,
-        				hitWhiteLine });
+        				hitWhiteLine 
+        				});
         //, lowBattery});
         //forward, 
         
@@ -98,11 +102,7 @@ public class SumoBot {
     
     
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		//ObjectDetect listener = new ObjectDetect();
-		//RangeFeatureDetector fd = new RangeFeatureDetector(us, MAX_DETECT, 500);
-		//fd.addListener(listener);
 		
 		/*
 		ObjectDetect listener = new ObjectDetect();
@@ -113,64 +113,16 @@ public class SumoBot {
 		*/
 		UltrasonicSensor uSensorFront = new UltrasonicSensor(SensorPort.S2);
 		UltrasonicSensor uSensorLeft = new UltrasonicSensor(SensorPort.S1);
+		
 		// Object to communicate with sound sensorplugged into port 2:
-		//SoundSensor sSensor= new SoundSensor(SensorPort.S2);
-		
-
 		//Accelerometer accelerometer = SensorSelector.createAccelerometer(SensorPort.S1);
-		
 		//LightSensor smuxLiSensor = new LightSensor(new SMUXSensorPort(SensorPort.S1, 2), true);
-		
-		//HiTechnicColorSensor2 FSensor = new HiTechnicColorSensor2(SensorPort.S3,2);
 		
 		LightSensor lightSensor = new LightSensor(SensorPort.S4);
 		
-		
 		new SumoBot();
-		
-		
-		
-		//ColorSensor cs = new ColorSensor(SensorPort.S4);
-		//AccelSensor light = new LightSensor(SensorPort.S4);
-
-		//Color color = cs.getColor();
-		
-		//int red = color.getRed();
-	    
-	    
-		/*
-		while(!Button.ESCAPE.isDown())
-		{
-			if (lightSensor.getLightValue() > 55) //found white, so turn left 
-			   { 
-				//turn right
-				Motor.A.setPower(30);
-				Motor.C.setPower(30);
-				
-				Motor.A.backward();
-				Motor.C.forward();
-				doFor(100);
-				Motor.A.stop();
-				Motor.C.stop();
-			   } 
-			   else //found black, so turn right 
-			   { 
-			      //(put your right turn statements here)
-				   Motor.A.setPower(30);
-					Motor.C.setPower(30);
-					Motor.A.setAcceleration(30);
-					Motor.C.setAcceleration(30);
-					
-					Motor.A.forward();
-					Motor.C.forward();
-					doFor(100);
-			   }
-		}
-		*/
-
 	}
 
-	
 	
 	private void init(){
         resetMotor(left);

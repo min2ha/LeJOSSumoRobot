@@ -28,8 +28,8 @@ public class SonarEnemyDetection implements Behavior {
     public SonarEnemyDetection(SumoBot sumoBot) {
         this.sumoBot = sumoBot;
         //lightSample = new float[sumoBot.getLight().getLightValue()];//.sampleSize()];
-        this.sumoBot.getLeft().setSpeed(300);//.forward();
-        this.sumoBot.getRight().setSpeed(300);//.forward();
+        //this.sumoBot.getLeft().setSpeed(300);//.forward();
+        //this.sumoBot.getRight().setSpeed(300);//.forward();
     }
 
     @Override
@@ -42,16 +42,17 @@ public class SonarEnemyDetection implements Behavior {
 
     @Override
     public void action() {
-    	//System.out.println("--- ObstacleBehavior  -- action() --  sumoBot.getLight() = " + sumoBot.getLight());
+    	System.out.println("--- SonarEnemyDetection  -- action() --  ");
         suppressed = false;
         RegulatedMotor leftMotor = sumoBot.getLeft();
         RegulatedMotor rightMotor = sumoBot.getRight();
 
         //leftMotor.rotate(450, true);
         //rightMotor.rotate(-450, true);
-        leftMotor.stop();//.rotate(450, true);
-        rightMotor.stop();//rotate(-450, true);
+        //leftMotor.stop();//.rotate(450, true);
+        //rightMotor.stop();//rotate(-450, true);
 
+        //???
         while( (leftMotor.isMoving() || rightMotor.isMoving()) && !suppressed )
             Thread.yield();
 

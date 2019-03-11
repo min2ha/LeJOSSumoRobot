@@ -56,10 +56,10 @@ public class EnemyDetectionBehavior implements Behavior {
         RegulatedMotor leftMotor = sumoBot.getLeft();
         RegulatedMotor rightMotor = sumoBot.getRight();
 
-        leftMotor.rotate(450, true);
-        rightMotor.rotate(-450, true);
-        //leftMotor.backward();//.rotate(450, true);
-        //rightMotor.forward();//rotate(-450, true);
+        //leftMotor.rotate(450, true);
+        //rightMotor.rotate(-450, true);
+        leftMotor.backward();//.rotate(450, true);
+        rightMotor.forward();//rotate(-450, true);
 
         while( (leftMotor.isMoving() || rightMotor.isMoving()) && !suppressed )
             Thread.yield();
