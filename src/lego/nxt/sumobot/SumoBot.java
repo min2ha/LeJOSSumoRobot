@@ -12,6 +12,7 @@ import lejos.robotics.RegulatedMotor;
 import lejos.robotics.objectdetection.RangeFeatureDetector;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
+import lego.nxt.sumobot.behavior.AccelSyncMotorProblemBehavior;
 import lego.nxt.sumobot.behavior.BatteryLowBehavior;
 import lego.nxt.sumobot.behavior.DriveForwardBehavior;
 import lego.nxt.sumobot.behavior.EnemyDetectionBehavior;
@@ -94,9 +95,12 @@ public class SumoBot {
         //Behavior lowBattery = new BatteryLowBehavior(this, Battery.getVoltage());
         Behavior enemyDetectionBehavior = new EnemyDetectionBehavior(this);
         Behavior sonarEnemyDetection = new SonarEnemyDetection(this);
+        Behavior accelSyncMotorProblemBehavior = new AccelSyncMotorProblemBehavior(this);
+        
         
         arbitrator = new Arbitrator(
         		new Behavior[]{
+        				accelSyncMotorProblemBehavior,
         				enemyDetectionBehavior,
         				//sonarEnemyDetection
         				forwardToEnemy,
