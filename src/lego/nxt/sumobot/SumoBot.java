@@ -20,6 +20,8 @@ import lego.nxt.sumobot.behavior.SonarEnemyDetection;
 //import lejos.hardware.motor.NXTRegulatedMotor;
 import lego.nxt.sumobot.objectdetection.ObjectDetect;
 
+import lejos.nxt.addon.AccelHTSensor;
+
 public class SumoBot {
 	
 	
@@ -34,6 +36,10 @@ public class SumoBot {
     
     private LightSensor lightSensor;
 
+    //You can convert tilt to acceleration and back:
+    //Cos(angle)=acceleration
+    private AccelHTSensor accelHTSensor;
+    
     private final Arbitrator arbitrator;
 
     /*
@@ -76,6 +82,9 @@ public class SumoBot {
 
         lightSensor = new LightSensor(SensorPort.S4);
         sonarFront = new UltrasonicSensor(SensorPort.S1);
+        
+        accelHTSensor = new AccelHTSensor(SensorPort.S3);
+        
         
         
         //Push/Attack behaviour!
@@ -155,6 +164,10 @@ public class SumoBot {
     }
     public LightSensor getLight() {
         return lightSensor;
+    }
+
+    public AccelHTSensor getAccelHTSensor() {
+        return accelHTSensor;
     }
 
 
