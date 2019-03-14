@@ -19,6 +19,8 @@ package lego.nxt.sumobot.behavior;
  * REIKIA REVERANSO
  * */
 
+// Acceleration along Y axis. Positive or negative values in mg. (g = acceleration due to gravity = 9.81 m/s^2) 
+// Acceleration along Z axis. Positive or negative values in mg. (g = acceleration due to gravity = 9.81 m/s^2) 
 
 import lego.nxt.sumobot.SumoBot;
 import lejos.nxt.Motor;
@@ -44,7 +46,8 @@ public class AccelSyncMotorProblemBehavior implements Behavior {
     	System.out.println("--- AccelSyncMotorProblemBehavior  -- takeControl() --  sumoBot.getLight() = " + sumoBot.getLight());
     	return (Motor.A.getPower() > 80 
     			//&&
-    			|| (sumoBot.getAccelHTSensor().getXAccel() < 1 
+    			|| (sumoBot.getAccelHTSensor().getXAccel() < 1
+    					//Acceleration along X axis. Positive or negative values in mg. (g = acceleration due to gravity = 9.81 m/s^2) 
     					|| sumoBot.getAccelHTSensor().getYAccel() < 1 
     					|| sumoBot.getAccelHTSensor().getZAccel() < 1));
     }

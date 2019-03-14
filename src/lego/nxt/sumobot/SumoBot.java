@@ -133,6 +133,11 @@ public class SumoBot {
 		
 		LightSensor lightSensor = new LightSensor(SensorPort.S4);
 		
+        AccelHTSensor accelHTSensor = new AccelHTSensor(SensorPort.S3);
+
+		
+		System.out.println("--- Accel data X: " + accelHTSensor.getXAccel() + ", Y: " + accelHTSensor.getYAccel() + ", Z: "+ accelHTSensor.getZAccel());
+		
 		new SumoBot();
 	}
 
