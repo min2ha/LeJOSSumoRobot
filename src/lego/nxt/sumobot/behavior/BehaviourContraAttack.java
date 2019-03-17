@@ -9,12 +9,12 @@ import lejos.robotics.subsumption.Behavior;
 /**
  * @author Mindaugas Vidmantas
  *
- * 2019-03-10
+ * 2019-03-18
  *
  * Email: minvidm@gmail.com, mindaugas.vidmantas@ktu.lt
  *
  */
-public class BehaviorAvoid implements Behavior
+public class BehaviourContraAttack implements Behavior
 {
 	// what to do
 	public void action()
@@ -23,13 +23,10 @@ public class BehaviorAvoid implements Behavior
 
 		try
 		{
-			//SumoBotMT.setSpeed(500);
+			
 			SumoBotMT.travel(-1);
-			SumoBotMT.turn(-100);
-			//SumoBotMT.setSpeed(550);
-		
-			//lightSensor.getLightValue()
-			SumoBotMT.LIGHTVALUE = 50;
+			SumoBotMT.turn(-20);
+			
 		}
 		catch(Exception ex)
 		{
@@ -45,7 +42,11 @@ public class BehaviorAvoid implements Behavior
 	// when to start doing it
 	public boolean takeControl()
 	{
-		return (SumoBotMT.LIGHTVALUE > 54 );//|| SumoBotMT.sonar.getDistance() < 10 );
+		//jeigu kryptis == pirmyn, bet accel rodo ne i ta puse, vadinasi atejo laikas suktis
+		//arba suktis kol suveiks 
+		// 1. sonar 
+		// 2. white line
+		return true;//|| SumoBotMT.sonar.getDistance() < 10 );
 	}	
 }
 
